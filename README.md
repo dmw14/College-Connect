@@ -11,7 +11,6 @@ It enables **students**, **faculty**, and **admins** to share notices, resolve q
 - [Tech Stack](#-tech-stack)
 - [Database Schema](#-database-schema)
 - [Security Features](#-security-features)
-- [Getting Started](#-getting-started)
 
 ---
 
