@@ -5,15 +5,6 @@ It enables **students**, **faculty**, and **admins** to share notices, resolve q
 
 ---
 
-## 📋 Table of Contents
-- [Features](#-features)
-- [How It Works](#-how-it-works)
-- [Tech Stack](#-tech-stack)
-- [Database Schema](#-database-schema)
-- [Security Features](#-security-features)
-
----
-
 ## ✨ Features
 
 ### 🎯 For Students
@@ -78,43 +69,6 @@ It enables **students**, **faculty**, and **admins** to share notices, resolve q
 └─────────────────┘
 ```
 
-### User Flow
-
-#### Student Journey
-1. **Sign Up/Login** → Student registers with email and optional student ID
-2. **Dashboard** → Views latest notices and can submit queries
-3. **Submit Query** → Fills form with question, submits to admin
-4. **Track Status** → Monitors query status (Pending → Responded → Resolved)
-5. **Search** → Uses search bar to find specific notices
-
-#### Admin Journey
-1. **Login** → Admin logs in with admin credentials
-2. **Dashboard** → Views notice creation form and query management panel
-3. **Post Notice** → Creates notice with title, content, and category
-4. **Manage Queries** → Reviews pending student queries
-5. **Respond** → Provides answer to student query and marks as responded
-
-### Data Flow Example
-
-**Posting a Notice:**
-```
-Admin → Create Notice Form → Validates Input → 
-Supabase Auth Check → RLS Policy Verification → 
-Insert into Database → Real-time Update → 
-Student Dashboards Refresh Automatically
-```
-
-**Submitting a Query:**
-```
-Student → Query Form → Auth Check → 
-Insert with student_id → Database Storage → 
-Admin Dashboard Shows New Query → 
-Admin Responds → Database Update → 
-Student Dashboard Shows Response
-```
-
----
-
 ## 🚀 Tech Stack
 
 ### 🖥️ Frontend
@@ -144,49 +98,6 @@ Student Dashboard Shows Response
 
 ### 🧭 Routing
 - 🛣️ **React Router v6** – Client-side navigation and protected routes  
-
----
-
-## 🗃️ Database Schema
-
-### Tables
-
-#### `profiles`
-Stores user profile information and roles
-```sql
-- id (uuid, primary key)
-- user_id (uuid, references auth.users)
-- full_name (text)
-- role (enum: 'student' | 'admin')
-- student_id (text, optional)
-- created_at (timestamp)
-```
-
-#### `notices`
-Stores all college notices and announcements
-```sql
-- id (uuid, primary key)
-- title (text)
-- content (text)
-- category (enum: 'urgent' | 'exam' | 'academic' | 'event' | 'general')
-- created_by (uuid, references profiles)
-- created_at (timestamp)
-- updated_at (timestamp)
-```
-
-#### `queries`
-Stores student queries and admin responses
-```sql
-- id (uuid, primary key)
-- student_id (uuid, references profiles)
-- question (text)
-- response (text, optional)
-- status (enum: 'pending' | 'responded' | 'resolved')
-- responded_by (uuid, optional)
-- responded_at (timestamp, optional)
-- created_at (timestamp)
-- updated_at (timestamp)
-```
 
 ---
 
