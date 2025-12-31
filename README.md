@@ -5,6 +5,70 @@ It enables **students**, **faculty**, and **admins** to share notices, resolve q
 
 ---
 
+## ✨ Features
+
+### 🎯 For Students
+- **📢 Notice Board**: View all college notices with real-time updates
+  - Categorized notices (Urgent, Exam, Academic, Event, General)
+  - Color-coded badges for easy identification
+  - Search functionality to find specific notices
+  - Chronologically sorted with timestamps
+  
+- **❓ Query System**: Submit questions and track responses
+  - Easy-to-use query submission form
+  - Real-time status tracking (Pending, Responded, Resolved)
+  - View all submitted queries in one place
+  - Timestamped responses from admin team
+  
+- **🔍 Search & Filter**: Quickly find relevant information
+  - Search across all notices
+  - Filter by category
+  - Responsive design for mobile and desktop
+
+### 👨‍💼 For Administrators
+- **📝 Notice Management**: Create and publish announcements
+  - Rich text editor for detailed notices
+  - Category selection for better organization
+  - Instant publishing to all students
+  - Edit and delete capabilities
+  
+- **💬 Query Management**: Respond to student queries
+  - View all pending queries in one dashboard
+  - Mark queries as responded or resolved
+  - Track response history
+  - Efficient workflow for handling multiple queries
+
+### 🔐 Authentication & Authorization
+- **Secure Login System**: Email/password authentication
+- **Role-Based Access Control**: Separate dashboards for students and admins
+- **Session Management**: Auto-login with persistent sessions
+- **Profile Management**: User profiles with role information
+
+---
+
+## 🔄 How It Works
+
+### System Architecture
+
+```
+┌─────────────────┐
+│   React App     │
+│  (Frontend UI)  │
+└────────┬────────┘
+         │
+         │ HTTP/WebSocket
+         │
+┌────────▼────────┐
+│ Lovable Cloud   │
+│  (Supabase)     │
+├─────────────────┤
+│ • PostgreSQL DB │
+│ • Auth Service  │
+│ • RLS Policies  │
+│ • Real-time API │
+└─────────────────┘
+```
+
 ## 🚀 Tech Stack
 
 ### 🖥️ Frontend
@@ -19,6 +83,7 @@ It enables **students**, **faculty**, and **admins** to share notices, resolve q
 - ☁️ **Lovable Cloud (powered by Supabase)** – Managed backend platform  
 - 🧮 **PostgreSQL** – Relational database  
 - 🔒 **Row Level Security (RLS)** – Enforces database-level access control  
+- 🔄 **Real-time Subscriptions** – Live data updates across clients
 
 ### 🔐 Authentication
 - 🧾 **Supabase Auth** – Built-in user authentication system  
@@ -35,3 +100,62 @@ It enables **students**, **faculty**, and **admins** to share notices, resolve q
 - 🛣️ **React Router v6** – Client-side navigation and protected routes  
 
 ---
+
+## 🔒 Security Features
+
+### Row-Level Security (RLS) Policies
+
+**Notices Table:**
+- ✅ Everyone can view notices
+- ✅ Only admins can create, update, and delete notices
+
+**Queries Table:**
+- ✅ Students can view only their own queries
+- ✅ Students can create queries
+- ✅ Admins can view all queries
+- ✅ Admins can update queries (add responses)
+
+**Profiles Table:**
+- ✅ Users can view all profiles (for name display)
+- ✅ Users can only update their own profile
+- ✅ Auto-created on user signup via database trigger
+
+### Authentication Flow
+1. User signs up with email/password
+2. Supabase creates auth record
+3. Database trigger creates profile record
+4. Role assigned (student/admin)
+5. JWT token issued for API requests
+6. RLS policies enforce data access rules
+
+---
+
+## 📱 Pages & Routes
+
+- `/` - Landing page with feature overview
+- `/auth` - Login/Signup page
+- `/dashboard` - Role-based dashboard (redirects to student or admin view)
+  - Student view: Notices + Query submission
+  - Admin view: Notice creation + Query management
+
+---
+
+## 🎨 Design System
+
+- **Color Palette:** Deep blue primary with amber accents
+- **Typography:** Clean, modern sans-serif fonts
+- **Components:** Card-based layouts with hover effects
+- **Responsive:** Mobile-first design approach
+- **Dark Mode:** (Future enhancement)
+
+---
+
+## 🔮 Future Enhancements
+
+- 📅 Academic calendar integration
+- 📊 Analytics dashboard for admins
+- 🔔 Push notifications for new notices
+- 📁 File attachments for notices
+- 🏷️ Tags and advanced filtering
+- 💬 Real-time chat between students and faculty
+- 📱 Mobile app (React Native)
