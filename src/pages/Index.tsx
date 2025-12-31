@@ -83,7 +83,7 @@ const Index = () => {
 
       <footer className="border-t mt-20">
         <div className="container mx-auto px-4 py-8 text-center text-muted-foreground">
-          <p>© 2024 College Connect. Built for better campus communication.</p>
+          <p>© 2026 College Connect. Built for better campus communication.</p>
         </div>
       </footer>
     </div>
