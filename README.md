@@ -59,8 +59,8 @@ It enables **students**, **faculty**, and **admins** to share notices, resolve q
          │ HTTP/WebSocket
          │
 ┌────────▼────────┐
-│ Lovable Cloud   │
-│  (Supabase)     │
+│      Cloud      │
+│    (Supabase)   │
 ├─────────────────┤
 │ • PostgreSQL DB │
 │ • Auth Service  │
