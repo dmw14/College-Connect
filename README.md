@@ -1,4 +1,4 @@
-# 🎓 Campus Connect — Modern College Communication Platform
+# 🎓 College Connect — Modern College Communication Platform
 
 Campus Connect is a modern web platform designed to simplify communication and information access within a college ecosystem.  
 It enables **students**, **faculty**, and **admins** to share notices, resolve queries, and access academic updates seamlessly — all in one centralized system.
